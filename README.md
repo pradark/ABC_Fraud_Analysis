@@ -2,7 +2,7 @@
 
 Fraud risk analysis on business banking accounts using labeled transaction history to design interpretable prevention rules. Covers pattern detection, dollar-severity ranking, and a two-tier production policy for ABC (Jun–Dec 2022).
 
-**[Interactive report →](https://pradark.github.io/ABC_Fraud_Analysis/)**
+**[Interactive report →](https://pradark.github.io/ABC_Fraud_Analysis/fraud_analysis.html)**
 
 ## Overview
 

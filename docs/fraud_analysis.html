@@ -208,7 +208,7 @@
 <body>
   <div class="wrap">
     <h1>ABC fraud rules — analysis &amp; production policy</h1>
-    <p class="doc-meta">Case study · Jun–Dec 2022 · 328 businesses with transactions (276 confirmed fraud, 52 good)</p>
+    <p class="doc-meta">Jun–Dec 2022 · 328 businesses with transactions (276 confirmed fraud, 52 good)</p>
 
     <nav class="toc" aria-label="Table of contents">
       <h2>Contents</h2>
@@ -220,7 +220,7 @@
         <li><a href="#rule-stacking">How rules stack</a></li>
         <li><a href="#fraud-context">Fraud pattern &amp; money flows</a></li>
         <li><a href="#rule-reference">Rule reference &amp; glossary</a></li>
-        <li><a href="#case-studies">Case study examples</a></li>
+        <li><a href="#case-studies">Worked examples</a></li>
       </ol>
     </nav>
 
@@ -284,11 +284,6 @@
             (<code>direction = from</code>) with a <strong>severity</strong> lens — bad rate × average charge size —
             then turned into testable atomic rules.
           </p>
-          <p class="caption" style="margin-top:10px;padding:10px 12px;background:#f8fafc;border:1px solid var(--border);border-radius:8px">
-            <strong>AI use:</strong> Phase 1 was my own notebook work. From here I used a Cursor AI agent to run targeted analyses faster
-            (postal vs. online postage splits, MCC bad-rate tables, ACH vs. card flow comparisons).
-            I posed the hypotheses and questions below; I validated every finding against the raw data before it shaped a rule.
-          </p>
           <div class="approach-questions">
             <h4>Key questions that shaped the rules</h4>
             <ul>
@@ -310,13 +305,7 @@
             Findings were codified in <code>fraud_complete_analysis.py</code>: 37 atomic rules (R01–R37), each evaluated for
             precision, recall, false positives, and bad-dollar capture. Rules were ranked and stacked with OR logic;
             a curated 11-rule production rollout (5 Immediate + 6 Confirm) was chosen for automation — not a greedy
-            max-recall stack. This report (<code>fraud_analysis.html</code>) is the final deliverable.
-          </p>
-          <p class="caption" style="margin-top:10px;padding:10px 12px;background:#f8fafc;border:1px solid var(--border);border-radius:8px">
-            <strong>AI use:</strong> The agent produced first-pass code and this report layout (rule engine, evaluation CSVs, dashboard HTML).
-            I refined what mattered: rule thresholds, the production rollout order, Immediate vs. Confirm tiers,
-            generalizing postal-only to quasi-cash MCC codes, dropping weak signals (e.g. micro-deposits as a score),
-            and re-running analysis to verify every metric on the labeled sample.
+            max-recall stack. This report (<code>fraud_analysis.html</code>) summarizes the production policy and supporting analysis.
           </p>
           <ul>
             <li><strong>What changed from the notebook</strong> — shifted from ACH-velocity-only (Risk_Brief) to card/MCC signals: apparel, quasi-cash, GC-style swipes, contactless+AVS, international, returned ACH.</li>
@@ -676,7 +665,7 @@
     </section>
 
     <section class="doc-section" id="case-studies">
-      <h2>8. Case study examples</h2>
+      <h2>8. Worked examples</h2>
       <p class="section-lead">Four confirmed-fraud accounts from the sample, showing exactly how the bust-out was executed and which rules would have flagged it. All figures are from the raw transaction ledger.</p>
 
       <div class="case">

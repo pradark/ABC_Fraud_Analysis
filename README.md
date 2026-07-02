@@ -4,12 +4,13 @@ Take-home case study: analyze labeled business accounts and transaction history 
 
 ## Primary deliverable
 
-**[fraud_analysis.html](fraud_analysis.html)** — standalone report with production policy, rule evaluation, charts, and worked case studies.
+**[View the interactive report →](https://pradark.github.io/ABC_Fraud_Analysis/)**
 
-To view the rendered report in a browser:
+Standalone HTML report with production policy, rule evaluation, charts, and worked case studies.
 
-- [Open on GitHub](https://github.com/pradark/ABC_Fraud_Analysis/blob/main/fraud_analysis.html) (source view)
-- [HTML Preview](https://htmlpreview.github.io/?https://raw.githubusercontent.com/pradark/ABC_Fraud_Analysis/main/fraud_analysis.html) (interactive charts)
+- **Live report (GitHub Pages):** https://pradark.github.io/ABC_Fraud_Analysis/
+- **Direct link:** https://pradark.github.io/ABC_Fraud_Analysis/fraud_analysis.html
+- [Source file on GitHub](https://github.com/pradark/ABC_Fraud_Analysis/blob/main/fraud_analysis.html) (code view only — use the links above to read the report)
 
 ## What was analyzed
 

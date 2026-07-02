@@ -29,8 +29,8 @@ The dataset includes **328 businesses** with transaction history (**276 confirme
 |------|-------------|
 | [docs/fraud_analysis.html](docs/fraud_analysis.html) | Interactive HTML report: approach, production decision tree, rule glossary, money-flow chart, worked examples. |
 | [ABC_Risk.ipynb](ABC_Risk.ipynb) | Jupyter notebook — exploratory analysis, feature engineering, IV/WOE ranking, decision tree, initial rules. |
-| [businesses.csv](businesses.csv) | Labeled businesses: `business_token`, `is_bad`. |
-| [transactions.csv](transactions.csv) | Transaction ledger: entry type, direction, amount, status, MCC, card/ACH fields, vendor. |
+| [data/businesses.csv](data/businesses.csv) | Labeled businesses: `business_token`, `is_bad`. |
+| [data/transactions.csv](data/transactions.csv) | Transaction ledger: entry type, direction, amount, status, MCC, card/ACH fields, vendor. |
 
 ## Data note
 

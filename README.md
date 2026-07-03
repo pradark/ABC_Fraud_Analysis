@@ -2,11 +2,11 @@
 
 Fraud risk analysis on business banking accounts using labeled transaction history to design interpretable prevention rules. Covers pattern detection, dollar-severity ranking, and a two-tier production policy for ABC (Jun–Dec 2022).
 
-**[Interactive report →](https://pradark.github.io/ABC_Fraud_Analysis/fraud_analysis.html)**
+**[Interactive report →](https://pradark.github.io/ABC_Fraud_Analysis/fraud_analysis.html)** · **[Data dictionary →](data/data_dictionary.md)**
 
 ## Overview
 
-The dataset includes **328 businesses** with transaction history (**276 confirmed fraud, 52 good**) and **12,658 transactions** over Jun–Dec 2022. All metrics are computed at the **business level** (`is_bad`), with **outgoing spend** (`direction = from`) used for dollar severity.
+The dataset includes **328 businesses** with transaction history (**276 confirmed fraud, 52 good**) and **12,658 transactions** over Jun–Dec 2022 ([field definitions](data/data_dictionary.md)). All metrics are computed at the **business level** (`is_bad`), with **outgoing spend** (`direction = from`) used for dollar severity.
 
 ### Findings
 

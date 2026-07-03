@@ -31,6 +31,7 @@ The dataset includes **328 businesses** with transaction history (**276 confirme
 | [ABC_Risk.ipynb](ABC_Risk.ipynb) | Jupyter notebook — exploratory analysis, feature engineering, IV/WOE ranking, decision tree, initial rules. |
 | [data/businesses.csv](data/businesses.csv) | Labeled businesses: `business_token`, `is_bad`. |
 | [data/transactions.csv](data/transactions.csv) | Transaction ledger: entry type, direction, amount, status, MCC, card/ACH fields, vendor. |
+| [data/data_dictionary.md](data/data_dictionary.md) | Field definitions for both CSV files. |
 
 ## Data note
 

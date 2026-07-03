@@ -13,7 +13,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-text-size-adjust: 100%; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg); color: var(--text); line-height: 1.5; padding: 24px;
+      background: var(--bg); color: var(--text); line-height: 1.5; padding: 0;
       overflow-x: hidden; }
     .wrap { max-width: 1280px; margin: 0 auto; width: 100%; min-width: 0; }
     h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 6px; }
@@ -142,7 +142,7 @@
     .toc li { margin: 6px 0; font-size: 0.92rem; }
     .toc a { color: var(--accent); text-decoration: none; }
     .toc a:hover { text-decoration: underline; }
-    .doc-section { scroll-margin-top: 16px; margin-bottom: 8px; }
+    .doc-section { scroll-margin-top: 24px; margin-bottom: 8px; }
     .doc-section > h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; }
     .doc-section > .section-lead { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; max-width: 72ch; }
     .intro-body { font-size: 0.92rem; line-height: 1.6; color: var(--text); }
@@ -182,12 +182,43 @@
       border: 1px solid var(--border); border-radius: 8px;
     }
     .approach-questions h4 { font-size: 0.85rem; margin-bottom: 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
-    @media (max-width: 640px) {
-      body {
-        padding: 12px;
-        padding-left: max(12px, env(safe-area-inset-left));
-        padding-right: max(12px, env(safe-area-inset-right));
+
+    .layout { display: flex; align-items: flex-start; min-height: 100vh; }
+    .sidebar {
+      width: 240px; flex-shrink: 0; position: sticky; top: 0; height: 100vh;
+      overflow-y: auto; border-right: 1px solid var(--border); background: #fff;
+      padding: 20px 14px;
+    }
+    .sidebar-brand { font-size: 0.92rem; font-weight: 700; line-height: 1.35; margin-bottom: 6px; }
+    .sidebar-meta { font-size: 0.72rem; color: var(--muted); margin-bottom: 18px; line-height: 1.4; }
+    .sidebar-title {
+      font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--muted); font-weight: 600; margin-bottom: 8px;
+    }
+    .sidebar-nav { display: flex; flex-direction: column; gap: 2px; }
+    .sidebar-nav a {
+      display: block; padding: 8px 10px; border-radius: 6px; color: var(--text);
+      text-decoration: none; font-size: 0.84rem; border-left: 3px solid transparent;
+    }
+    .sidebar-nav a:hover { background: #f1f5f9; color: var(--accent); }
+    .sidebar-nav a.active {
+      background: #eff6ff; color: var(--accent); border-left-color: var(--accent); font-weight: 600;
+    }
+    .main { flex: 1; min-width: 0; padding: 24px; }
+
+    @media (max-width: 900px) {
+      .layout { flex-direction: column; }
+      .sidebar {
+        width: 100%; height: auto; position: sticky; top: 0; z-index: 20;
+        border-right: none; border-bottom: 1px solid var(--border); padding: 12px 14px;
       }
+      .sidebar-brand, .sidebar-meta { display: none; }
+      .sidebar-nav { flex-direction: row; flex-wrap: wrap; gap: 6px; }
+      .sidebar-nav a { border-left: none; padding: 6px 10px; font-size: 0.78rem; }
+      .main { padding: 12px; }
+
+    }
+    @media (max-width: 640px) {
       h1 { font-size: 1.35rem; }
       .subtitle { font-size: 0.85rem; }
       .card { padding: 14px; border-radius: 8px; }
@@ -206,23 +237,27 @@
   </style>
 </head>
 <body>
+  <div class="layout">
+    <aside class="sidebar" aria-label="Section navigation">
+      <div class="sidebar-brand">ABC fraud rules</div>
+      <div class="sidebar-meta">Jun–Dec 2022 · analysis &amp; production policy</div>
+      <div class="sidebar-title">Contents</div>
+      <nav class="sidebar-nav">
+        <a href="#introduction">Introduction</a>
+        <a href="#approach">Approach</a>
+        <a href="#data">Data</a>
+        <a href="#production-policy">Production policy</a>
+        <a href="#rule-stacking">How rules stack</a>
+        <a href="#fraud-context">Fraud pattern &amp; money flows</a>
+        <a href="#rule-reference">Rule reference &amp; glossary</a>
+        <a href="#case-studies">Worked examples</a>
+      </nav>
+    </aside>
+    <main class="main">
+
   <div class="wrap">
     <h1>ABC fraud rules — analysis &amp; production policy</h1>
     <p class="doc-meta">Jun–Dec 2022 · 328 businesses with transactions (276 confirmed fraud, 52 good)</p>
-
-    <nav class="toc" aria-label="Table of contents">
-      <h2>Contents</h2>
-      <ol>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#approach">Approach</a></li>
-        <li><a href="#data">Data</a></li>
-        <li><a href="#production-policy">Production policy</a></li>
-        <li><a href="#rule-stacking">How rules stack</a></li>
-        <li><a href="#fraud-context">Fraud pattern &amp; money flows</a></li>
-        <li><a href="#rule-reference">Rule reference &amp; glossary</a></li>
-        <li><a href="#case-studies">Worked examples</a></li>
-      </ol>
-    </nav>
 
     <section class="doc-section" id="introduction">
       <h2>1. Introduction</h2>
@@ -1147,6 +1182,26 @@
       options: mergeChartOptions({ indexAxis: "y", plugins: { legend: { display: false } },
         scales: { x: { title: { display: true, text: "Bad outbound ($k)" } } } }),
     });
+  </script>
+    </main>
+  </div>
+  <script>
+
+    (function () {
+      const links = Array.from(document.querySelectorAll('.sidebar-nav a'));
+      const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+      if (!sections.length) return;
+      const setActive = (id) => {
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+      };
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActive(visible[0].target.id);
+      }, { rootMargin: '-20% 0px -65% 0px', threshold: [0, 0.1, 0.25] });
+      sections.forEach(s => observer.observe(s));
+      if (location.hash) setActive(location.hash.slice(1));
+    })();
+
   </script>
 </body>
 </html>
